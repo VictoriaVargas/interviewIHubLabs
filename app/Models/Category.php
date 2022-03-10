@@ -21,11 +21,11 @@ class Category extends Model
 {
     
     static $rules = [
-		'name' => 'required',
+		'name' => 'required|regex:/^[\pL\s\-]+$/u',
 		'description' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 5;
 
     /**
      * Attributes that should be mass-assignable.

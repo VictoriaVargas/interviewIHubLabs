@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Interview Julieta Parra') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Interview Julieta') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,11 +34,18 @@
                     @if (Auth::check())
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto">
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="{{ route('bookstats.index') }}">{{ __('Estatus') }}</a>
+                            </li> -->
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('books.index') }}">{{ __('Books') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
                             </li>
                         </ul>
                     @endif

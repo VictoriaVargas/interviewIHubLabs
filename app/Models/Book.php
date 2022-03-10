@@ -24,20 +24,21 @@ class Book extends Model
 {
     
     static $rules = [
-		'name' => 'required',
-		'author' => 'required',
+		'name' => 'required|regex:/^[\pL\s\-]+$/u',
+		'author' => 'required|regex:/^[\pL\s\-]+$/u',
 		'category_id' => 'required',
+        'estatus_id' => 'required',
 		'user_id' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 5;
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name','author','category_id','user_id'];
+    protected $fillable = ['name','author','category_id','estatus_id','user_id'];
 
 
     /**
@@ -54,6 +55,14 @@ class Book extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bookstat()
+    {
+        return $this->hasOne('App\Models\Bookstat', 'id', 'estatus_id');
     }
     
 

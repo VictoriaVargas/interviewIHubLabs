@@ -40,6 +40,7 @@
 										<th>Author</th>
 										<th>Category</th>
 										<th>User</th>
+                                        <th>Availability</th>
 
                                         <th></th>
                                     </tr>
@@ -53,6 +54,7 @@
 											<td>{{ $book->author }}</td>
 											<td>{{ $book->category->name }}</td>
 											<td>{{ $book->user->name }}</td>
+                                            <td>{{ $book->bookstat->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('books.destroy',$book->id) }}" method="POST">
@@ -70,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $books->links() !!}
+                {!! $books->links('pagination::bootstrap-4') !!}
             </div>
         </div>
     </div>

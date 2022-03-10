@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TelegramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::resource('categories', App\Http\Controllers\CategoryController::class)->middleware('auth');
 Route::resource('books', App\Http\Controllers\BookController::class)->middleware('auth');
-
+Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth');
+Route::resource('bookstats', App\Http\Controllers\BookstatController::class)->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/activity', [App\Http\Controllers\TelegramController::class, 'updatedActivity'])->name('activity');

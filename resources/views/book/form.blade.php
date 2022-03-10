@@ -19,6 +19,12 @@
         </div>
 
 
+        <div class="form-group">
+            {{ Form::label('estatus_id') }}
+            {{ Form::select('estatus_id',$bookstat, $book->estatus_id, ['class' => 'form-control' . ($errors->has('estatus_id') ? ' is-invalid' : ''), 'placeholder' => 'Estatus Id']) }}
+            {!! $errors->first('estatus_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+
 
         <div class="form-group">
             {{ Form::label('user_id') }}

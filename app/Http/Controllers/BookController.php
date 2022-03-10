@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Bookstat;
 
 use Illuminate\Http\Request;
 
@@ -37,8 +38,17 @@ class BookController extends Controller
         $book = new Book();
         $categories = Category::pluck('name','id');
         $users = User::pluck('name','id');
+        $bookstat = Bookstat::pluck('name','id');
         
-        return view('book.create', compact('book','categories','users'));
+        return view('book.create', compact('book','categories','users','bookstat'));
+
+        $text = 'Soy una prueba.';
+
+        Telegram::sendMessage([
+            'chat_id' => env('TELEGRAM_CHANNEL_ID', ''),
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);
     }
 
     /**
@@ -81,8 +91,9 @@ class BookController extends Controller
         $book = Book::find($id);
         $categories = Category::pluck('name','id');
         $users = User::pluck('name','id');
+        $bookstat = Bookstat::pluck('name','id');
         
-        return view('book.edit', compact('book','categories','users'));
+        return view('book.edit', compact('book','categories','users','bookstat'));
     }
 
     /**

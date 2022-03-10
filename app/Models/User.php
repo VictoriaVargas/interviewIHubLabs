@@ -8,9 +8,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
+use Illuminate\Database\Eloquent\Model;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    static $rules = [
+		'name' => 'required|regex:/^[\pL\s\-]+$/u',
+		'email' => 'required',
+        'password' => 'required',
+    ];
+
+    protected $perPage = 20;
 
     /**
      * The attributes that are mass assignable.

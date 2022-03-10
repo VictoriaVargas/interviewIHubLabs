@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function updatedActivity()
+    {
+        $activity = Telegram::getUpdates();
+        dd($activity);
+    }
 }
